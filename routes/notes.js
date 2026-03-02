@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const mongoose = require('mongoose');
 const Note = require('../models/Note'); 
 
 const fallbackNotes = require('../data/fallbackNotes');

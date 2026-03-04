@@ -7,6 +7,11 @@ const fallbackNotes = require('../data/fallbackNotes');
 
 // 1. GET all notes 
 router.get('/', async (req, res) => {
+
+    if (mongoose.connection.readyState !== 1 || (isTest && req.headers['x-test-disconnect'])) {
+        return res.json(fallbackNotes);
+    }
+    
     if (mongoose.connection.readyState !== 1) {
         console.log("Uyarı: MongoDB bağlantısı yok! Kullanıcıya statik yedek notlar (fallback) gönderiliyor.");
         return res.json(fallbackNotes); 

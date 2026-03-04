@@ -34,3 +34,11 @@ app.use('/api/notes', notesRouter);
 app.listen(PORT, () => {
     console.log(`Server http://localhost:${PORT} is starting..`);
 });
+
+if (require.main === module) {
+    app.listen(PORT, () => {
+        console.log(`Server http://localhost:${PORT} is starting..`);
+    });
+}
+
+module.exports = app;
